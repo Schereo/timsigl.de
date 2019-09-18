@@ -1,2 +1,4 @@
 Backend.Api/.jshintrc
 .vscode
+Frotend.Gui/dist/
+Frotend.Gui/node_modules/
