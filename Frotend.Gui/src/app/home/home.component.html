@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-6">Hi</div>
+  <div class="col-6">Ho</div>
+</div>
+
+<form #signupForm="ngForm">
+  <label for="email">E-Mail</label>
+  <input type="text" id="email" [(ngModel)]="form.name" name="name" required #email>
+  
+  <label for="password">Passwort</label>
+  <input type="password" id="password" [(ngModel)]="form.password" name="password" required>
+  <button type="submit">Abschicken</button>
+</form>
+Info: {{email.className}}
+        
