@@ -9,6 +9,6 @@
   
   <label for="password">Passwort</label>
   <input type="password" id="password" [(ngModel)]="form.password" name="password" required>
-  <button type="submit">Abschicken</button>
+  <button type="submit" (click)="getData();">Abschicken</button>
 </form>
 Info: {{email.className}}
