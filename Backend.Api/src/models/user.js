@@ -38,8 +38,16 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
+userSchema.methods.toJSON = function () {
+    const userObject = this.toObject();
+
+    delete userObject.password;
+    delete userObject.tokens;
+    return userObject;
+};
+
 userSchema.methods.generateAuthToken = async function (email, password) {
-  const token = jwt.sign({_id: this._id.toString()}, 'timspersonalwebsite2019');
+  const token = jwt.sign({_id: this._id.toString()}, process.env.TOKEN_SECRET);
 
   this.tokens = this.tokens.concat({token});
   await this.save();
