@@ -7,9 +7,8 @@ const app = express();
 
 const port = process.env.PORT;
 
-app.use(cors({
-    origin: 'http://timsigl.de'
-}));
+app.options('*', cors());
+app.use(cors());
 app.use(express.json());
 app.use(userRouter);
 
