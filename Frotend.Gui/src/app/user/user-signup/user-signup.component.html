@@ -13,6 +13,10 @@
         <label for="signup-password">Passwort</label>
         <input type="password" class="form-control" id="signup-password" ngModel name="password" required minlength="6">
       </div>
+      <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="privacyCheckbox" ngModel name="privacy">
+          <label class="form-check-label" for="privacyCheckbox">Ich akzeptiere die Datenschutzerklärung</label>
+      </div>
       <div>
         <button class="btn btn-primary" [disabled]="!signupForm.valid" >Registrieren</button>
       </div>

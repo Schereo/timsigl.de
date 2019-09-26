@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="/home">
-    <img src="../../assets/main_logo.png"  height="100px" alt="">
+    <img src="../../assets/main_logo.png"  height="50px" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,33 +9,36 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Ich
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/user/signup">Registrieren</a>
-        </div>
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
-    <form class="form-inline my-2 my-lg-0" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value);">
-      <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="text" id="email" class="mr-sm-2 form-control" ngModel name="email" required email> 
-      </div>
-       <div class="form-group">
-          <label for="password">Passwort</label>
-          <input type="password" id="password" class="mr-sm-2 form-control" ngModel name="password" required>
-       </div>      
-      <button *ngIf="!isLoading" type="submit" class="btn btn-outline-success" [disabled]="!loginForm.valid">Abschicken</button>
-      <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
-    </form>
-    <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+    <ul class="navbar-nav ml-auto">
+      <a class="dropdown-toggle" #dropdowntoggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="material-icons md-48">person</i>
+      </a>
+      <li *ngIf="!isLoggedIn" class="dropdown-menu dropdown-menu-right">      
+          <form class="px-4 py-3" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+              <div class="form-group">
+                <label for="exampleDropdownFormEmail1">Email Adresse</label>
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" ngModel name="email">
+              </div>
+              <div class="form-group">
+                <label for="exampleDropdownFormPassword1">Passwort</label>
+                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Passwort" ngModel name="password">
+              </div>
+              <button type="submit" class="btn btn-primary">Anmelden</button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/user/signup">Noch kein Konto? Registrieren</a>
+            <a class="dropdown-item" href="#">Passwort vergessen?</a>
+      </li>
+      <li *ngIf="isLoggedIn" class="dropdown-menu dropdown-menu-right">
+        <a href="" class="dropdown-item">Einstellungen</a>
+        <a href="" class="dropdown-item">Abmelden</a>
+      </li>
+    </ul>
+      
+    
+  
   </div>
 </nav>

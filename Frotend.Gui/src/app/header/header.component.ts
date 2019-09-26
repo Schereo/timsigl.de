@@ -9,27 +9,25 @@ import { User } from 'src/app/_models/user';
 })
 export class HeaderComponent implements OnInit {
 
-  errorMessage: string;
-  isLoading = false;
+  isLoggedIn = false;
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
-  onLogin(user: User) {
-    this.isLoading = true;
+  onSubmit(user: User) {
     this.loginService.loginUser(user).subscribe(
-      ans => {
+      (ans) => {
         console.log(ans);
-        this.isLoading = false;
-        this.errorMessage = "Erfolgreich angemeldet!"
+        this.isLoggedIn = true;
       },
-      error => {
-        console.log(error);
-        this.isLoading = false;
-      } 
-    );
+      (err) => {
+        console.log(err);
+      }
+    )
   }
+
+  
 
 }

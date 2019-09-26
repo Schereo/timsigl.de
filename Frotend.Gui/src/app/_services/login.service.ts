@@ -22,4 +22,8 @@ export class LoginService {
     loginUser(user: User) {
         return this.http.post<UserResponseData>(environment.apiUrl + '/users/login', user); 
     };
+
+    signupUser(user: User) {
+        return this.http.post(environment.apiUrl + '/users', user);
+    }
 }
