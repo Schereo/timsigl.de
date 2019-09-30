@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './utility/page-not-found/page-not-found.c
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { UserSettingsComponent } from './user/user-settings/user-settings.component';
 import { UserSignupComponent } from './user/user-signup/user-signup.component';
@@ -19,6 +19,7 @@ import { PrivacyComponent } from './footer/privacy/privacy.component';
 import { LegalinformationComponent } from './footer/legalinformation/legalinformation.component';
 import { ContactComponent } from './utility/contact/contact.component';
 import { BlogComponent } from './home/blog/blog.component';
+import { AuthInterceptorService } from './_services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { BlogComponent } from './home/blog/blog.component';
     RouterModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

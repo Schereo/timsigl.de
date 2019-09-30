@@ -16,25 +16,28 @@
       <a class="dropdown-toggle" #dropdowntoggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="material-icons md-48">person</i>
       </a>
-      <li *ngIf="!isLoggedIn" class="dropdown-menu dropdown-menu-right">      
-          <form class="px-4 py-3" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
-              <div class="form-group">
-                <label for="exampleDropdownFormEmail1">Email Adresse</label>
-                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" ngModel name="email">
-              </div>
-              <div class="form-group">
-                <label for="exampleDropdownFormPassword1">Passwort</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Passwort" ngModel name="password">
-              </div>
-              <button type="submit" class="btn btn-primary">Anmelden</button>
-            </form>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/user/signup">Noch kein Konto? Registrieren</a>
-            <a class="dropdown-item" href="#">Passwort vergessen?</a>
-      </li>
-      <li *ngIf="isLoggedIn" class="dropdown-menu dropdown-menu-right">
-        <a href="" class="dropdown-item">Einstellungen</a>
-        <a href="" class="dropdown-item">Abmelden</a>
+      <li class="dropdown-menu dropdown-menu-right">
+        <div *ngIf="loginService.isLoggedIn">
+            <a href="" class="dropdown-item">Einstellungen</a>
+            <a class="dropdown-item" (click)="onLogout()">Abmelden</a>
+        </div>
+        <div *ngIf="!loginService.isLoggedIn">
+            <form class="px-4 py-3" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+                <div class="form-group">
+                  <label for="exampleDropdownFormEmail1">Email Adresse</label>
+                  <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" ngModel name="email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleDropdownFormPassword1">Passwort</label>
+                  <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Passwort" ngModel name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Anmelden</button>
+              </form>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/user/signup">Noch kein Konto? Registrieren</a>
+              <a class="dropdown-item" href="#">Passwort vergessen?</a>
+        </div>      
+          
       </li>
     </ul>
       

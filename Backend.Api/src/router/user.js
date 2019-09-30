@@ -4,8 +4,14 @@ const router = new express.Router();
 const auth = require('../middleware/auth');
 
 router.post('/users', async (req, res) => {
-    const user = new User(req.body);
 
+    if (!req.body.privacy) {
+        return res.status(400).send({
+            error: "user has not agreed to privacy"
+        });
+    }
+    delete req.body.privacy;
+    const user = new User(req.body);
     try {
         await user.save();
         const token = await user.generateAuthToken();
@@ -29,7 +35,7 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
-router.post('/users/logout', auth, async (req, res) => {
+router.get('/users/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token;
@@ -94,7 +100,7 @@ router.patch('/users/:id', auth, async (req, res) => {
 
         res.send(user);
     } catch(e) {
-        res.status(400).send('Fehler'+e);
+        res.status(400).send(e);
     }
 });
 

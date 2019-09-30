@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from 'src/app/_models/user';
+import { LoginUser } from 'src/app/_models/loginUser';
+import { LoginService } from 'src/app/_services/login.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-signup',
@@ -8,14 +11,32 @@ import { User } from 'src/app/_models/user';
   styleUrls: ['./user-signup.component.css']
 })
 export class UserSignupComponent implements OnInit {
+  private userSub: Subscription;
 
-  constructor() { }
+  constructor(private loginService: LoginService,
+    private router: Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+      this.userSub = this.loginService.user.subscribe(user => {
+        this.loginService.isLoggedIn = !!user;
+      });
+    }
+  
+    ngOnDestroy() {
+      this.userSub.unsubscribe();
+    }
 
-  onSubmit(user: User) {
+  onSubmit(user: LoginUser) {
     console.log(user);
-  }
+    this.loginService.signupUser(user).subscribe(
+      (ans) => {
+        console.log(ans);
+        this.router.navigate(['/home'])
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
 
 }

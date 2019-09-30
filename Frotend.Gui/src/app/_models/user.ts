@@ -1,8 +1,18 @@
 export class User {
     
     constructor(
-        public email: string,
-        public password: string
+        public user: {
+         _id: string,
+         name: string,
+         email: string,
+         mailVerified: boolean
+        },
+        private _token: string
+        
     ) {}
+
+    get token() {
+        return this._token;
+    }
     
 }
