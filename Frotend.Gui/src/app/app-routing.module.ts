@@ -7,6 +7,9 @@ import { UserSignupComponent } from './user/user-signup/user-signup.component';
 import { PrivacyComponent } from './footer/privacy/privacy.component';
 import { LegalinformationComponent } from './footer/legalinformation/legalinformation.component';
 import { ContactComponent } from './utility/contact/contact.component';
+import { ArticleComponent } from './article/article.component';
+import { AuthGuardService } from './_services/auth-guard.service';
+import { CreateArticleComponent } from './article/create-article/create-article.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/home'},
@@ -16,6 +19,14 @@ const routes: Routes = [
     { path: 'privacy', component: PrivacyComponent},
     { path: 'contact', component: ContactComponent},
     { path: 'legalinfo', component: LegalinformationComponent},
+    {
+        path: 'article',
+        component: ArticleComponent,
+        canActivate: [AuthGuardService],
+        children: [
+            { path: 'create', component: CreateArticleComponent}
+        ]
+    },
     { path: '**', component: PageNotFoundComponent },
 ];
 

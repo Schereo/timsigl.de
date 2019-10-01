@@ -20,6 +20,9 @@ import { LegalinformationComponent } from './footer/legalinformation/legalinform
 import { ContactComponent } from './utility/contact/contact.component';
 import { BlogComponent } from './home/blog/blog.component';
 import { AuthInterceptorService } from './_services/auth-interceptor.service';
+import { AuthGuardService } from './_services/auth-guard.service';
+import { CreateArticleComponent } from './article/create-article/create-article.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { AuthInterceptorService } from './_services/auth-interceptor.service';
     PrivacyComponent,
     LegalinformationComponent,
     ContactComponent,
-    BlogComponent
+    BlogComponent,
+    CreateArticleComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { AuthInterceptorService } from './_services/auth-interceptor.service';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [LoginService,
-  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+  AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

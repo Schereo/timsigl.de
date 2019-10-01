@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 .material-icons.md-48 { font-size: 48px; }
+
+/* Overwriting bootstrap styles */
+.btn.btn-primary {
+    background-color: #2db8c7;
+    border: none;
+}
+.btn.btn-primary:hover {
+    background-color: #525151;
+    border: none;
+}
