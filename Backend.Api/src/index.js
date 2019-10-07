@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('./db/mongodb');
 const userRouter = require('./router/user');
+const blogEntryRouter = require('./router/blog-entry');
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.options('*', cors());
 app.use(cors());
 app.use(express.json());
 app.use(userRouter);
+app.use(blogEntryRouter);
 
 app.listen(port, () => console.log('Server is running on port ' + port));

@@ -73,6 +73,12 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user;
 };
 
+userSchema.virtual('blogentries', {
+    ref: 'BlogEntry',
+    localField: '_id',
+    foreignField: 'creator'
+});
+
 // Hash password when creating or updating account
 userSchema.pre('save', async function (next) {
     
