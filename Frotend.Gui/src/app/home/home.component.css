@@ -1,0 +1,9 @@
+.skills-container{
+    background-color: var(--secondary);
+    min-height: 300px;
+    padding: 3em;
+}
+
+h2 {
+    color: white;
+}

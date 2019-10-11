@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { HeaderComponent } from './header/header.component';
 import { UserSettingsComponent } from './user/user-settings/user-settings.component';
 import { UserSignupComponent } from './user/user-signup/user-signup.component';
@@ -23,6 +24,7 @@ import { AuthInterceptorService } from './_services/auth-interceptor.service';
 import { AuthGuardService } from './_services/auth-guard.service';
 import { CreateArticleComponent } from './article/create-article/create-article.component';
 import { ArticleComponent } from './article/article.component';
+import { SkillsComponent } from './home/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ArticleComponent } from './article/article.component';
     ContactComponent,
     BlogComponent,
     CreateArticleComponent,
-    ArticleComponent
+    ArticleComponent,
+    SkillsComponent
   ],
   imports: [
     BrowserModule,

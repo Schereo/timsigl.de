@@ -5,7 +5,10 @@ const router = new express.Router();
 
 router.post('/blogentries', auth, async (req, res) => {
 
-    const blogEntry = new BlogEntry(req.body, req.user);
+    const blogEntry = new BlogEntry({
+        ...req.body,
+        creator: req.user._id
+    });
     try {       
         await blogEntry.save();
         res.status(201).send();
@@ -14,12 +17,17 @@ router.post('/blogentries', auth, async (req, res) => {
     }
 });
 
-router.get('/blogentries', auth, async (req, res) => {
+router.get('/blogentries', async (req, res) => {
 
     try {
         const blogEntries = await BlogEntry.find({});
-        await blogEntries.populate('creator').execPopulate();
-        res.send(blogEntries);
+        var blogEntriesWithCreator= [];
+        for(var blogEntry of blogEntries) {
+            const blogEntryWithCreator = await blogEntry.populate('creator').execPopulate();
+            blogEntriesWithCreator.push(blogEntryWithCreator);
+        }
+        
+        res.send(blogEntriesWithCreator);
     } catch (e) {
         res.status(400).send();
     }

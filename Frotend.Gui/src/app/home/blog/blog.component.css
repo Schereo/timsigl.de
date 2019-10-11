@@ -3,4 +3,6 @@
     padding: 3em;
     margin: 1em;
     color: white;
+    border-radius: 5px;
+    box-shadow: 10px 14px 25px -7px rgba(130,130,130,1);
 }
