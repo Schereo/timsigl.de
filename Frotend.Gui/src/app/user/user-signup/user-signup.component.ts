@@ -21,7 +21,7 @@ export class UserSignupComponent implements OnInit {
         this.loginService.isLoggedIn = !!user;
       });
     }
-  
+
     ngOnDestroy() {
       this.userSub.unsubscribe();
     }
@@ -31,12 +31,12 @@ export class UserSignupComponent implements OnInit {
     this.loginService.signupUser(user).subscribe(
       (ans) => {
         console.log(ans);
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log(err);
       }
     );
-  };
+  }
 
 }

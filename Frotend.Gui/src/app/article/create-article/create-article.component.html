@@ -1,3 +1,9 @@
 <h2>Artikel erstellen</h2>
 <div id="editorjs"></div>
-<button class="btn btn-primary" (click)="onArticleSave()" >Speichern</button>
+<form #createArticleForm (ngSubmit)="onArticleSave()">
+    <div class="form-group">
+        <label for="exampleDropdownFormEmail1">Titel</label>
+        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" ngModel name="email">
+    </div>
+</form>
+<button class="btn btn-primary my-3" (click)="" >Speichern</button>

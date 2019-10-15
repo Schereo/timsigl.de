@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     new SkillCard('../../../assets/logos/nodejs.png', 'Nodejs', 'Infotext'),
     new SkillCard('../../../assets/logos/html.png', 'HTML 5', 'Infotext'),
     new SkillCard('../../../assets/logos/mongodb.png', 'Mongo DB', 'Infotext')
-  ]
+  ];
 
   ngOnInit() {
     this.blogService.getAllBlogEntries();

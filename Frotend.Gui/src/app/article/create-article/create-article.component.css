@@ -1,5 +1,5 @@
 #editorjs {
-    background-color: #dbdbdb;
+    background-color: white;
     border-radius: 5px;
-    color: white;
+    color: var(--secondary);
 }

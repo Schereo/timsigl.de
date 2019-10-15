@@ -11,7 +11,6 @@ export class BlogEntry {
             name: string,
             email: string
         },
-        public tags: string[],       
-    ){}
-    
+        public tags: string[],
+    ) {}
 }

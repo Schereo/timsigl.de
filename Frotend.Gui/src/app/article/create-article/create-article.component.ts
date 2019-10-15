@@ -34,13 +34,13 @@ export class CreateArticleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
-  onArticleSave(){
+  onArticleSave() {
     this.editor.save().then((outputData) => {
-      console.log(outputData)
-    })
+      console.log(outputData);
+    });
   }
 
 }

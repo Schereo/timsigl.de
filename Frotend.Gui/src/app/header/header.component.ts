@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (err) => {
         console.log(err);
       }
-    )
+    );
   }
 
   onLogout() {
@@ -45,11 +45,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.router.navigate(['/home']);
       },
       (err) => {
-        console.log(err)
+        console.log(err);
       }
-    )
+    );
   }
 
-  
+
 
 }

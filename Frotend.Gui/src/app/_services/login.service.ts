@@ -1,27 +1,27 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { User } from "../_models/user";
-import { environment } from "src/environments/environment";
-import { LoginUser } from "../_models/loginUser";
-import { BehaviorSubject } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../_models/user';
+import { environment } from 'src/environments/environment';
+import { LoginUser } from '../_models/loginUser';
+import { BehaviorSubject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable()
 export class LoginService {
     user = new BehaviorSubject<User>(null);
     isLoggedIn = false;
-    
+
     constructor(private http: HttpClient) {}
 
     loginUser(user: LoginUser) {
         return this.http.post<User>(environment.apiUrl + '/users/login', user)
             .pipe(
                 tap(resData => {
-                    this.handleAuthentication(resData.user, resData.token);                   
+                    this.handleAuthentication(resData.user, resData.token);
                 })
             );
-    };
+    }
 
     signupUser(user: LoginUser) {
         return this.http.post<User>(environment.apiUrl + '/users', user)
@@ -30,11 +30,11 @@ export class LoginService {
                     this.handleAuthentication(resData.user, resData.token);
                 })
             );
-    };
+    }
 
     autoLoginUser() {
         const userData: {
-            user : {
+            user: {
                 email: string,
                 mailVerified: boolean,
                 name: string,
@@ -45,14 +45,14 @@ export class LoginService {
         if (!userData) {
             return;
         }
-        console.log(userData)
+        console.log(userData);
         const loadedUser = new User(userData.user, userData._token);
         this.user.next(loadedUser);
     }
 
     logoutUser() {
         localStorage.removeItem('userData');
-        return this.http.get<null>(environment.apiUrl + '/users/logout');     
+        return this.http.get<null>(environment.apiUrl + '/users/logout');
     }
 
     private handleAuthentication(userData: any, token: string) {
