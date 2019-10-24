@@ -1,50 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-sm navbar-light bg-blue">
   <a class="navbar-brand" routerLink="/home">
-    <img src="../../assets/main_logo.png"  height="50px" alt="">
+    <img src="../../assets/main_logo_w_background.png"  height="50px" alt="">
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li *ngIf="loginService.isLoggedIn" class="nav-item" routerLinkActive="active">
-        <a routerLink="/article/create" class="nav-link">Artikel erstellen</a>
-      </li>
-    </ul>
     <ul class="navbar-nav ml-auto">
-      <a class="dropdown-toggle" #dropdowntoggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="material-icons md-48">person</i>
-      </a>
-      <li class="dropdown-menu dropdown-menu-right">
-        <div *ngIf="loginService.isLoggedIn">
-            <a href="" class="dropdown-item">Einstellungen</a>
-            <a class="dropdown-item" (click)="onLogout()">Abmelden</a>
-        </div>
-        <div *ngIf="!loginService.isLoggedIn">
-            <form class="px-4 py-3" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
-                <div class="form-group">
-                  <label for="exampleDropdownFormEmail1">Email Adresse</label>
-                  <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" ngModel name="email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleDropdownFormPassword1">Passwort</label>
-                  <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Passwort" ngModel name="password">
-                </div>
-                <button type="submit" class="btn btn-primary">Anmelden</button>
-              </form>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="/user/signup">Noch kein Konto? Registrieren</a>
-              <a class="dropdown-item" href="#">Passwort vergessen?</a>
-        </div>      
-          
+      <li class="nav-item" >
+        <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
       </li>
-    </ul>
-      
-    
-  
-  </div>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/blog">Blog</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/services">Dienste</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/portfolio">Portfolio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/contact">Kontakt</a>
+      </li>
+    </ul>      
 </nav>

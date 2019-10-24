@@ -4,3 +4,21 @@
 .dropdown-toggle{
     cursor: pointer;
 }
+.bg-blue{
+    background-color: var(--primary);
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-weight: 500;
+}
+.nav-item {
+    margin-right: 2em;
+}
+.active {
+    transition: transform 0.3s;
+    transform: scale(1.3) ;
+}
+.navbar{
+    z-index: 2;
+}
+

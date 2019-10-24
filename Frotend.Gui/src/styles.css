@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 :root {
     --primary: #2DB8C7;
     --secondary: #646464;
@@ -11,6 +11,7 @@
 }
 body {
     background: #d6d6d6;
+    overflow-x: hidden;
 }
 .material-icons.md-48 {
      font-size: 48px; 

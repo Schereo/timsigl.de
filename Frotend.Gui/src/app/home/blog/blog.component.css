@@ -1,8 +1,25 @@
 .blog-article {
-    background-color: #2DB8C7;
+    background-color: white;
     padding: 3em;
     margin: 1em;
-    color: white;
-    border-radius: 5px;
+    color: var(--primary);
+    border-radius: 20px;
+    max-height: 200px;
     box-shadow: 10px 14px 25px -7px rgba(130,130,130,1);
+}
+
+.blog-article > p {
+    line-height: 1.2em;
+    max-height: 3.6em;
+    overflow: hidden;
+
+}
+.blog-article > a {
+    display: block;
+    position: relative;
+    right: 0px;
+    background-color: var(--primary);
+} 
+.material-icons.md-light {
+    columns: white;
 }
