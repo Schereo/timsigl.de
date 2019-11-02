@@ -1,6 +1,5 @@
 img {
     object-fit: cover;
-    height: 18em;
     margin-bottom: 3em;
     width: 100%;
 }
@@ -24,4 +23,16 @@ img {
 }
 .site-heading > p {
     font-size: larger;
+}
+
+@media (min-width: 769px) {
+    img {
+        height: 18em;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        height: 25em;
+    }
 }
