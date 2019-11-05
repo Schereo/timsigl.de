@@ -119,4 +119,22 @@ router.delete('/users/:id', auth, async (req, res) => {
     }
 });
 
+router.post('/users/role', auth, async (req, res) => {
+
+    if (req.user.role !== 'admin') {
+        return res.status(401).send({"error": "ROLE_TO_LOW"});
+    }
+    
+    try {
+        const user = await User.findOneAndUpdate({ email: req.body.email }, { role: req.body.role }, { returnNewDocument: true});
+
+        if (!user) {
+            return res.status(404).send();
+        }
+        res.send(user);
+    } catch (e) {
+        res.status(500).send();
+    }
+});
+
 module.exports = router;

@@ -22,13 +22,18 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
-                throw new Error('Mail is invalid')
+                throw new Error('Mail is invalid');
             }
         }
     },
     mailVerified: {
         type: Boolean,
         default: false
+    },
+    role: {
+        type: String,
+        default: 'user',
+        enum: ['user', 'author', 'moderator', 'admin']
     },
     tokens: [{
         token: {
@@ -47,7 +52,7 @@ userSchema.methods.toJSON = function () {
 };
 
 userSchema.methods.generateAuthToken = async function (email, password) {
-  const token = jwt.sign({_id: this._id.toString()}, process.env.TOKEN_SECRET);
+  const token = jwt.sign({_id: this._id.toString()}, process.env.TOKEN_SECRET, {expiresIn: '3h'});
 
   this.tokens = this.tokens.concat({token});
   await this.save();
