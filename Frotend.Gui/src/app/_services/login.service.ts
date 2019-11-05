@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
 import { LoginUser } from '../_models/loginUser';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 
@@ -14,7 +14,7 @@ export class LoginService {
 
     constructor(private http: HttpClient) {}
 
-    loginUser(user: LoginUser) {
+    loginUser(user: LoginUser): Observable<User> {
         return this.http.post<User>(environment.apiUrl + '/users/login', user)
             .pipe(
                 tap(resData => {

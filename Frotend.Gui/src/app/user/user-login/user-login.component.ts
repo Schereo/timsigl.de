@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class UserLoginComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
+  private loginError = false;
 
   constructor(private loginService: LoginService,
     private router: Router) { }
@@ -27,14 +28,15 @@ export class UserLoginComponent implements OnInit, OnDestroy {
 
   onSubmit(user: LoginUser) {
     console.log(user);
-    // this.loginService.signupUser(user).subscribe(
-    //   (ans) => {
-    //     console.log(ans);
-    //     this.router.navigate(['/home']);
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
+    this.loginService.loginUser(user).subscribe(
+      (ans) => {
+        console.log(ans);
+        this.router.navigate(['/home']);
+        this.loginError = false;
+      },
+      (err) => {
+        this.loginError = true;
+      }
+    );
   }
 }

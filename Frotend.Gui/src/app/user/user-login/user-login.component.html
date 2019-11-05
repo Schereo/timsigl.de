@@ -15,7 +15,9 @@
       </div>
     </div>
     <div>
+        <div class="alert alert-danger" *ngIf="loginError"><strong>Fehler:</strong> E-Mail Adresse oder Passwort sind nicht korrekt.</div>
         <button class="btn btn-primary mt-3 mb-3" [disabled]="!loginForm.valid">Anmelden</button>
       </div>
   </form>
+  
 </div>
