@@ -1,16 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { LoginUser } from 'src/app/_models/loginUser';
 import { LoginService } from 'src/app/_services/login.service';
 import { Router } from '@angular/router';
+import { LoginUser } from 'src/app/_models/loginUser';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user-signup',
-  templateUrl: './user-signup.component.html',
-  styleUrls: ['./user-signup.component.css']
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.css']
 })
-export class UserSignupComponent implements OnInit, OnDestroy {
+export class UserLoginComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
 
   constructor(private loginService: LoginService,
@@ -28,15 +27,14 @@ export class UserSignupComponent implements OnInit, OnDestroy {
 
   onSubmit(user: LoginUser) {
     console.log(user);
-    this.loginService.signupUser(user).subscribe(
-      (ans) => {
-        console.log(ans);
-        this.router.navigate(['/home']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // this.loginService.signupUser(user).subscribe(
+    //   (ans) => {
+    //     console.log(ans);
+    //     this.router.navigate(['/home']);
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
-
 }

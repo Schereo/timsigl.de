@@ -19,15 +19,19 @@
 .blog-article .article-heading{
     font-size: smaller;
 }
-.blog-article .article-heading > .tag {
+.blog-article .article-heading .tag {
     background-color: var(--secondary);
-    border-radius: 10px;
+    border-radius: 15px;
     color: white;
     margin-right: 1em;
+    padding: 3px 10px;
+}
+.blog-article .article-heading:first-child {
+    margin-left: 0px;
 }
 
-.blog-article .article-heading > .author-name {
-    font-size: larger;
+.blog-article .article-heading > .author{
+    font-size: large;
 }
 
 .blog-article  a {
@@ -66,6 +70,9 @@
     }
     .blog-article  p {
         line-height: 1.2em;
+    }
+    .site-heading {
+        width: 75%;
     }
 }
 

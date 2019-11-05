@@ -25,14 +25,19 @@ img {
     font-size: larger;
 }
 
+/* Desktop and tablet styles */
 @media (min-width: 769px) {
     img {
         height: 18em;
     }
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
     img {
         height: 25em;
+    }
+    .site-heading {
+        width: 75%;
     }
 }

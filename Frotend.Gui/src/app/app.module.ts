@@ -25,6 +25,7 @@ import { AuthGuardService } from './_services/auth-guard.service';
 import { CreateArticleComponent } from './article/create-article/create-article.component';
 import { ArticleComponent } from './article/article.component';
 import { SkillsComponent } from './home/skills/skills.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SkillsComponent } from './home/skills/skills.component';
     BlogComponent,
     CreateArticleComponent,
     ArticleComponent,
-    SkillsComponent
+    SkillsComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
     --accent: #fcc623;
 }
 * {
-    font-family: 'Nunito Sans', sans-serif; 
+    font-family: 'Nunito', sans-serif; 
 }
 body {
     background: #d6d6d6;
@@ -21,6 +21,9 @@ body {
 .btn.btn-primary {
     background-color: #2db8c7;
     border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    padding: 0.6em 1em;
 }
 .btn.btn-primary:hover {
     background-color: #525151;
@@ -28,6 +31,9 @@ body {
 }
 .container-fluid{
     padding-left: 0;
-    padding-right: 0;
-    
+    padding-right: 0;   
+}
+
+.nav-link {
+    color: var(--primary)
 }
