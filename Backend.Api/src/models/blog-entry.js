@@ -1,20 +1,40 @@
 const mongoose = require('mongoose');
 
 const blogEntrySchema = new mongoose.Schema({
-    blocks: [{
-        type: {
+    heading: {
+        type: String,
+        required: true
+    },
+    summary: {
+        type: String,
+        required: true
+    },
+    text: {
+        blocks: [{
+            type: {
+                type: String
+            },
+            data: {
+                type: mongoose.SchemaTypes.Mixed
+            }
+        }],
+        time: {
+            type: Date
+        },
+        version: {
             type: String
         },
-        data: {
-            type: mongoose.SchemaTypes.Mixed
-        }
+    },
+    tags: [{
+        type: String,
+        validator: [function(tags) {
+            return tags.length >= 3;
+        }, 'NOT_ENOUGH_TAGS']
     }],
-    time: {
-        type: Date
-    },
-    version: {
-        type: String
-    },
+    published: {
+        type: Boolean,
+        default: true
+    },   
     creator: {
         type: mongoose.SchemaTypes.ObjectId,
         required: true,

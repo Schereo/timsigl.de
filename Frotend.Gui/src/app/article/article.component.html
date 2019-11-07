@@ -1,4 +1,21 @@
 <div class="container">
-    <router-outlet></router-outlet>
+  <ul class="nav  nav-fill">
+    <li class="nav-item">
+      <a routerLink="overview" class="nav-link" routerLinkActive="active">
+        <h2 class="mb-2">Meine Artikel</h2>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="create" class="nav-link" routerLinkActive="active">
+        <h2 class="mb-2">Artikel erstellen</h2>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="edit" class="nav-link" routerLinkActive="active">
+        <h2 class="mb-2">Artikel bearbeiten</h2>
+      </a>
+    </li>
+  </ul>
+  <hr class="mb-5">
+  <router-outlet></router-outlet>
 </div>
-

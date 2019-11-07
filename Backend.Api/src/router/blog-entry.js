@@ -3,10 +3,13 @@ const BlogEntry = require('../models/blog-entry');
 const auth = require('../middleware/auth');
 const router = new express.Router();
 
-router.post('/blogentries', auth, async (req, res) => {
+router.post('/article', auth, async (req, res) => {
 
     const blogEntry = new BlogEntry({
-        ...req.body,
+        heading: req.body.heading,
+        summary: req.body.summary,
+        text: req.body.text,
+        tags: req.body.tags,
         creator: req.user._id
     });
     try {       
@@ -17,7 +20,7 @@ router.post('/blogentries', auth, async (req, res) => {
     }
 });
 
-router.get('/blogentries', async (req, res) => {
+router.get('/articles', async (req, res) => {
 
     try {
         const blogEntries = await BlogEntry.find({});

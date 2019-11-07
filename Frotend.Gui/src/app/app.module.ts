@@ -26,6 +26,8 @@ import { CreateArticleComponent } from './article/create-article/create-article.
 import { ArticleComponent } from './article/article.component';
 import { SkillsComponent } from './home/skills/skills.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { OverviewArticleComponent } from './article/overview-article/overview-article.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     CreateArticleComponent,
     ArticleComponent,
     SkillsComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    EditArticleComponent,
+    OverviewArticleComponent
   ],
   imports: [
     BrowserModule,

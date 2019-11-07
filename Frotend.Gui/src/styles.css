@@ -16,18 +16,42 @@ body {
 .material-icons.md-48 {
      font-size: 48px; 
 }
+/* Scrollbar styling */
+::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+	background-color: transparent;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--secondary);
+}
 
 /* Overwriting bootstrap styles */
-.btn.btn-primary {
-    background-color: #2db8c7;
+.btn {
     border: none;
     border-radius: 20px;
     font-size: 0.9rem;
     padding: 0.6em 1em;
 }
+.btn.btn-primary {
+    background-color: var(--primary); 
+}
 .btn.btn-primary:hover {
     background-color: #525151;
     border: none;
+}
+.btn.btn-secondary{
+    background-color: var(--secondary);
 }
 .container-fluid{
     padding-left: 0;
@@ -35,5 +59,18 @@ body {
 }
 
 .nav-link {
-    color: var(--primary)
+    color: var(--secondary)
+}
+
+.nav-link:hover {
+    color: #525151
+}
+
+.active {
+    transition: transform 0.3s;
+    transform: scale(1.3) ;
+}
+
+.jumbotron {
+    background-color: white;
 }

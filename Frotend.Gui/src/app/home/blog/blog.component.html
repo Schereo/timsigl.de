@@ -5,32 +5,23 @@
     </div>
     <div class="col-md">
     <div class="row justify-content-start article-heading align-items-center">
-        <div class="col-auto author-name d-none d-md-block font-weight-bolder">Tim Sigl</div>
-        <div class="col-auto tag">#smartphone</div>
-        <div class="col-auto tag">#oneplus</div>
-        <div class="col-auto tag">#10t</div>
+        <div class="col-auto author-name d-none d-md-block font-weight-bolder">{{article.creator.name}}</div>
+        <div *ngFor="let tag of article.tags" class="col-auto tag  my-1">#{{tag}}</div>
       </div>
       <div class="row">
         <div class="col article-text">
-            <h2>Article</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-              magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-              gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-              elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-              et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-              sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-              dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-              kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                
+            <h2>{{article.heading}}</h2>
+            <p>{{article.summary}}</p>                
         </div>       
       </div>
       <div class="row d-md-none justify-content-between">
         <div class="col-6 author">
           <div class="row">
             <div class="col-auto">
-                <img  class="img-fluid rounded-circle" width="60px" src="../../../assets/tim_portrait.jpg" alt="Tim Sigl, Author">
+                <img  class="img-fluid rounded-circle" width="60px" src="../../../assets/tim_portrait.jpg" alt="Tim Sigl, Autor">
             </div>
             <div class="col-6 align-self-center pl-0">
-                <span class="font-weight-bolder">Tim Sigl</span>   <br>
+                <span class="font-weight-bolder">{{article.creator.name}}</span>   <br>
                 <span style="color: var(--secondary);" >Ich</span>               
             </div>
           </div>            

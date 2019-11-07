@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../_services/blog.service';
 import { SkillCard } from '../_models/skillCard';
+import { Observable } from 'rxjs';
+import { Article } from '../_models/article';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,8 @@ import { SkillCard } from '../_models/skillCard';
   providers: [BlogService]
 })
 export class HomeComponent implements OnInit {
+
+  articles: Observable<Article[]>;
 
   constructor(private blogService: BlogService) { }
 
@@ -21,7 +25,7 @@ export class HomeComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.blogService.getAllBlogEntries();
+    this.articles = this.blogService.getAllArticles();
   }
 
 

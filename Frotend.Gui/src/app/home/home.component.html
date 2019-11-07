@@ -1,6 +1,6 @@
 <div class="container">   
-    <div *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
-        <app-blog></app-blog>
+    <div *ngFor="let article of articles | async">
+        <app-blog [article]="article"></app-blog>
     </div>
 </div>
 
