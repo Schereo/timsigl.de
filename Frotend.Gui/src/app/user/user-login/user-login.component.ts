@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class UserLoginComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
-  private loginError = false;
+  loginError = false;
 
   constructor(private loginService: LoginService,
     private router: Router) { }
