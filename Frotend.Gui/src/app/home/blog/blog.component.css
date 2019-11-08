@@ -74,5 +74,8 @@
     .site-heading {
         width: 75%;
     }
+    .author {
+        padding: 0;
+    }
 }
 
