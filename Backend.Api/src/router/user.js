@@ -35,6 +35,10 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
+router.get('/users/autologin', auth, async(req, res) => {
+    res.send();
+});
+
 router.get('/users/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {

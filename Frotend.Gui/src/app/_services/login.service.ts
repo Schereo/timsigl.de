@@ -45,12 +45,18 @@ export class LoginService {
         if (!userData) {
             return;
         }
+        this.verifyToken().subscribe(
+            () => {
+                const loadedUser = new User(userData.user, userData._token);
+                this.user.next(loadedUser);
+            },
+            () => {
+                return;
+            });
         console.log(userData);
-        const loadedUser = new User(userData.user, userData._token);
-        this.user.next(loadedUser);
     }
 
-    logoutUser() {
+    logoutUser(): Observable<null> {
         localStorage.removeItem('userData');
         return this.http.get<null>(environment.apiUrl + '/users/logout');
     }
@@ -59,5 +65,9 @@ export class LoginService {
         const user = new User(userData, token);
         this.user.next(user);
         localStorage.setItem('userData', JSON.stringify(user));
+    }
+
+    private verifyToken(): Observable<null> {
+        return this.http.get<null>(environment.apiUrl + '/users/autologin');
     }
 }

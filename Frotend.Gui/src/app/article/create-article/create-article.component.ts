@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  EditorJS  from '@editorjs/editorjs';
+import EditorJS from '@editorjs/editorjs';
 const Header = require('@editorjs/header');
 const LinkTool = require('@editorjs/link');
 const RawTool = require('@editorjs/raw');
