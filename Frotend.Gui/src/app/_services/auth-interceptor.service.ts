@@ -11,7 +11,6 @@ constructor(private loginService: LoginService) {}
         return this.loginService.user.pipe(
             take(1),
             exhaustMap(user => {
-                console.log('User', user);
                 if (!user) {
                     return next.handle(req);
                 }

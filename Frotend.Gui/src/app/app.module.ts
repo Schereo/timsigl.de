@@ -28,6 +28,8 @@ import { SkillsComponent } from './home/skills/skills.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { EditArticleComponent } from './article/edit-article/edit-article.component';
 import { OverviewArticleComponent } from './article/overview-article/overview-article.component';
+import { RoleGuardService } from './_services/role-guard.service';
+import { MailService } from './_services/mail.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ import { OverviewArticleComponent } from './article/overview-article/overview-ar
   ],
   providers: [LoginService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-  AuthGuardService],
+  AuthGuardService, RoleGuardService, MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

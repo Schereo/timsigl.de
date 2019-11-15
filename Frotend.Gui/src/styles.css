@@ -78,6 +78,20 @@ body {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+.dropdown-menu {
+    border: none;
+    border-radius: 0.7em;
+    padding: 0;
+    color: var(--secondary);
+}
+.dropdown-item:hover {
+    background-color: var(--primary);
+    border-radius: 0.65em;
+    color: var(--white);
+}
+.dropdown-item {
+    padding: 10px 15px;
+}
 /* Desktop and tablet styles */
 @media (min-width: 769px) {  
     .active {

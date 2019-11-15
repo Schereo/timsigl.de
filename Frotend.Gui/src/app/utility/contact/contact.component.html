@@ -1,3 +1,34 @@
-<p>
-  contact works!
-</p>
+<div class="container">
+    <form #contactForm="ngForm" (ngSubmit)='onSubmit(contactForm.value)'>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <div class="form-group">
+            <label for="contact-subject">Betreff</label>
+            <input type="text" class="form-control" id="contact-subject" ngModel name="subject" required>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="form-group">
+                <label for="contact-mail">Deine E-Mail</label>
+                <input type="text" class="form-control" id="contact-mail" ngModel name="email" required email>
+              </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <div class="form-group">
+              <label for="contact-text">Nachricht</label>
+              <textarea class="form-control" id="contact-text" placeholder="Nachricht" ngModel name="message"
+              rows="5"></textarea>
+          </div>            
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-8">
+            <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary mb-3">Abschicken</button>
+        </div>
+      </div>     
+    </form>
+</div>

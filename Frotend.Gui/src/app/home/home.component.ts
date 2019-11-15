@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../_services/blog.service';
-import { SkillCard } from '../_models/skillCard';
+import { SkillCard } from '../_models/skill-card';
 import { Observable } from 'rxjs';
 import { Article } from '../_models/article';
 

@@ -19,6 +19,15 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/contact">Kontakt</a>
       </li>
+      <li *ngIf="loginService.isLoggedIn" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user?.user.name| uppercase}}
+        </a> 
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/article">Artikel</a>
+          <a class="dropdown-item" href="#">Benutzer Management</a>
+        </div>
+      </li>
     </ul>   
   </div>   
 </nav>

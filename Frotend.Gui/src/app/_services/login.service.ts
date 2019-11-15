@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
-import { LoginUser } from '../_models/loginUser';
+import { LoginUser } from '../_models/login-user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -33,27 +33,20 @@ export class LoginService {
     }
 
     autoLoginUser() {
-        const userData: {
-            user: {
-                email: string,
-                mailVerified: boolean,
-                name: string,
-                _id: string
-            },
-            _token: string
-        } = JSON.parse(localStorage.getItem('userData'));
+        const userData = JSON.parse(localStorage.getItem('userData'));
         if (!userData) {
             return;
         }
-        this.verifyToken().subscribe(
+        const token = userData._token;
+        this.http.post<null>(environment.apiUrl + '/users/autologin', {token: token}).subscribe(
             () => {
                 const loadedUser = new User(userData.user, userData._token);
                 this.user.next(loadedUser);
             },
             () => {
+                localStorage.removeItem('userData');
                 return;
             });
-        console.log(userData);
     }
 
     logoutUser(): Observable<null> {
@@ -67,7 +60,4 @@ export class LoginService {
         localStorage.setItem('userData', JSON.stringify(user));
     }
 
-    private verifyToken(): Observable<null> {
-        return this.http.get<null>(environment.apiUrl + '/users/autologin');
-    }
 }

@@ -34,6 +34,10 @@ const blogEntrySchema = new mongoose.Schema({
     published: {
         type: Boolean,
         default: true
+    },
+    url: {
+        type: String,
+        required: true
     },   
     creator: {
         type: mongoose.SchemaTypes.ObjectId,

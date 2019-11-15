@@ -4,6 +4,7 @@ export class User {
         public user: {
          _id: string,
          name: string,
+         role: string,
          email: string,
          mailVerified: boolean
         },

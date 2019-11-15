@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from 'src/app/_services/login.service';
-import { LoginUser } from '../_models/loginUser';
+import { LoginUser } from '../_models/login-user';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
+  public user: User;
 
   constructor(public loginService: LoginService,
     private router: Router) { }
@@ -18,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.userSub = this.loginService.user.subscribe(user => {
       this.loginService.isLoggedIn = !!user;
+      this.user = user;
     });
   }
 

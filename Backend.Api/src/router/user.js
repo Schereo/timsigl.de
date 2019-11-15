@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 const router = new express.Router();
 const auth = require('../middleware/auth');
+const jwt = require('jsonwebtoken');
 
 router.post('/users', async (req, res) => {
 
@@ -35,8 +36,19 @@ router.post('/users/login', async (req, res) => {
     }
 });
 
-router.get('/users/autologin', auth, async(req, res) => {
-    res.send();
+router.post('/users/autologin', async(req, res) => {
+    
+    try {
+        const decoded = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+        const user = await User.findOne({ _id: decoded._id, 'tokens.token': req.body.token });
+        if (!user) {
+            throw new Error();
+        }
+        res.status(200).send(user);
+    } catch (e) {
+        res.status(401).send({ error: 'Not authenticated', e});
+    }
+    
 });
 
 router.get('/users/logout', auth, async (req, res) => {

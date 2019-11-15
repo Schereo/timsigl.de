@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { LoginService } from 'src/app/_services/login.service';
 import { Router } from '@angular/router';
-import { LoginUser } from 'src/app/_models/loginUser';
+import { LoginUser } from 'src/app/_models/login-user';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,22 +9,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css']
 })
-export class UserLoginComponent implements OnInit, OnDestroy {
-  private userSub: Subscription;
+export class UserLoginComponent {
   loginError = false;
 
   constructor(private loginService: LoginService,
     private router: Router) { }
-
-    ngOnInit() {
-      this.userSub = this.loginService.user.subscribe(user => {
-        this.loginService.isLoggedIn = !!user;
-      });
-    }
-
-    ngOnDestroy() {
-      this.userSub.unsubscribe();
-    }
 
   onSubmit(user: LoginUser) {
     console.log(user);

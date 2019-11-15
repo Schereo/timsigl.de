@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoginUser } from 'src/app/_models/loginUser';
+import { LoginUser } from 'src/app/_models/login-user';
 import { LoginService } from 'src/app/_services/login.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
