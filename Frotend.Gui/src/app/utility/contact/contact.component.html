@@ -1,5 +1,5 @@
 <div class="container">
-    <form #contactForm="ngForm" (ngSubmit)='onSubmit(contactForm.value)'>
+    <form #contactForm="ngForm" (ngSubmit)='onSubmit(contactForm)'>
       <div class="row justify-content-center">
         <div class="col-8">
           <div class="form-group">
@@ -20,7 +20,7 @@
         <div class="col-8">
           <div class="form-group">
               <label for="contact-text">Nachricht</label>
-              <textarea class="form-control" id="contact-text" placeholder="Nachricht" ngModel name="message"
+              <textarea class="form-control" id="contact-text" placeholder="Nachricht" ngModel name="text"
               rows="5"></textarea>
           </div>            
         </div>
@@ -28,6 +28,9 @@
       <div class="row justify-content-center">
         <div class="col-8">
             <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary mb-3">Abschicken</button>
+            <div *ngIf="messageSend" class="alert alert-success" role="alert">
+                Nachricht gesendet!
+            </div>
         </div>
       </div>     
     </form>

@@ -1,6 +1,6 @@
 export interface Mail {
-    receiver: string;
-    sender: string;
+    from: string;
+    to: string;
     subject: string;
-    message: string;
+    text: string;
 }

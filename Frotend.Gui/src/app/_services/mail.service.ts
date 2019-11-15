@@ -10,8 +10,8 @@ export class MailService {
 
     constructor(private httpClient: HttpClient) {}
 
-    sendMail(sender: string, subject: string, message: string, receiver = 'info@timsigl.de'): Observable<Mail> {
-        const mail: Mail = {receiver, sender, subject, message};
+    sendMail(subject: string, text: string, from = 'info@timsigl.de', to = 'info@timsigl.de'): Observable<Mail> {
+        const mail: Mail = {from, to, subject, text};
         return this.httpClient.post<Mail>(environment.apiUrl + '/mail', mail);
     }
 }
