@@ -10,6 +10,8 @@ router.post('/article', auth, async (req, res) => {
         summary: req.body.summary,
         text: req.body.text,
         tags: req.body.tags,
+        published: req.body.published,
+        url: req.body.url,
         creator: req.user._id
     });
     try {       

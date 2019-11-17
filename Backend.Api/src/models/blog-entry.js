@@ -37,7 +37,8 @@ const blogEntrySchema = new mongoose.Schema({
     },
     url: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },   
     creator: {
         type: mongoose.SchemaTypes.ObjectId,
