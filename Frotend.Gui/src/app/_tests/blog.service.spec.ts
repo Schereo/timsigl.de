@@ -40,5 +40,7 @@ describe('mock article tests', () => {
         blogService.saveArticle(article).subscribe();
 
         const req = httpMock.expectOne({ url: environment.apiUrl + '/article', method: 'POST'});
+        expect(req.request.method).toBe("POST");
+        expect(req.request.body).toBeDefined();
     });
 });

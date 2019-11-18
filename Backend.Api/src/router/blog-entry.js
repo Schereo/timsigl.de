@@ -2,6 +2,7 @@ const express = require('express');
 const BlogEntry = require('../models/blog-entry');
 const auth = require('../middleware/auth');
 const router = new express.Router();
+const mongoose = require('mongoose');
 
 router.post('/article', auth, async (req, res) => {
 
@@ -25,16 +26,19 @@ router.post('/article', auth, async (req, res) => {
 router.get('/articles', async (req, res) => {
 
     try {
-        const blogEntries = await BlogEntry.find({});
-        var blogEntriesWithCreator= [];
-        for(var blogEntry of blogEntries) {
-            const blogEntryWithCreator = await blogEntry.populate('creator').execPopulate();
-            blogEntriesWithCreator.push(blogEntryWithCreator);
-        }
-        
-        res.send(blogEntriesWithCreator);
+        const articles = await BlogEntry.find({}).populate('creator');       
+        res.send(articles);
     } catch (e) {
         res.status(400).send();
+    }
+});
+
+router.get('/articles/me', auth, async (req, res) => {
+    try {
+        const articles = await BlogEntry.find({creator: mongoose.Types.ObjectId(req.user._id)}).populate('creator');
+        res.send(articles);
+    } catch (e) {
+        res.status(400).send(e);
     }
 });
 

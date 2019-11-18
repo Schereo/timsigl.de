@@ -31,6 +31,10 @@ import { OverviewArticleComponent } from './article/overview-article/overview-ar
 import { RoleGuardService } from './_services/role-guard.service';
 import { MailService } from './_services/mail.service';
 
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,13 @@ import { MailService } from './_services/mail.service';
   ],
   providers: [LoginService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-  AuthGuardService, RoleGuardService, MailService],
+  AuthGuardService, RoleGuardService, MailService,
+  { provide: LOCALE_ID, useValue: 'de' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+    registerLocaleData(localeDe);
+  }
+ }

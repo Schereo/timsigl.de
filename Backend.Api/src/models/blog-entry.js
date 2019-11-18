@@ -39,12 +39,26 @@ const blogEntrySchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },   
+    },
+    date: {
+        type: Date,
+    }, 
     creator: {
         type: mongoose.SchemaTypes.ObjectId,
         required: true,
         ref: 'User'
     }
+});
+
+blogEntrySchema.pre('save', async function (next) {
+    
+    if (this.isModified('published')) {
+        if (this.published) {
+            this.date = new Date();
+        }
+    }
+
+    next();
 });
 
 const BlogEntry = mongoose.model('BlogEntry', blogEntrySchema);

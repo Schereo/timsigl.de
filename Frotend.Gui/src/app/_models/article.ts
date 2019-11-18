@@ -14,4 +14,6 @@ export interface Article {
         name: string,
         email: string
     };
+    _v?: number;
+    _id?: string;
 }

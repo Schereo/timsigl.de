@@ -26,7 +26,7 @@ const routes: Routes = [
     {
         path: 'article',
         component: ArticleComponent,
-        canActivate: [AuthGuardService],
+        // canActivate: [AuthGuardService],
         children: [
             { path: 'create', component: CreateArticleComponent},
             { path: 'overview', component: OverviewArticleComponent},

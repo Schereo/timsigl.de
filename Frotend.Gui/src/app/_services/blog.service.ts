@@ -19,4 +19,12 @@ export class BlogService {
         return this.http.post<Article>(environment.apiUrl + '/article', article);
     }
 
+    deleteArticle(id: string): Observable<Article> {
+        return this.http.delete<Article>(environment.apiUrl + `/article/${id}`);
+    }
+
+    getMyArticles(): Observable<Article[]> {
+        return this.http.get<Article[]>(environment.apiUrl + '/articles/me');
+    }
+
 }

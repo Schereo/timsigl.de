@@ -1,0 +1,13 @@
+.table-wrapper {
+    background-color: var(--light);
+    padding: 2em;
+    border-radius: var(--main-borderradius);
+    margin-bottom: 2em;
+    box-shadow: 10px 14px 25px -7px rgba(130,130,130,1);
+}
+table {
+    margin-bottom: 0;
+}
+tr {
+    border-radius: var(--main-borderradius);
+}
