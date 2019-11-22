@@ -13,6 +13,7 @@ import { CreateArticleComponent } from './article/create-article/create-article.
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { OverviewArticleComponent } from './article/overview-article/overview-article.component';
 import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { DetailArticleComponent } from './article/detail-article/detail-article.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -23,8 +24,7 @@ const routes: Routes = [
     { path: 'privacy', component: PrivacyComponent},
     { path: 'contact', component: ContactComponent},
     { path: 'legalinfo', component: LegalinformationComponent},
-    {
-        path: 'article',
+    { path: 'article',
         component: ArticleComponent,
         // canActivate: [AuthGuardService],
         children: [
@@ -33,6 +33,7 @@ const routes: Routes = [
             { path: 'edit', component: EditArticleComponent}
         ]
     },
+    { path: 'article/:url', component: DetailArticleComponent},
     { path: '**', component: PageNotFoundComponent },
 ];
 

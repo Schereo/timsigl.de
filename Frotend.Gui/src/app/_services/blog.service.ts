@@ -27,4 +27,8 @@ export class BlogService {
         return this.http.get<Article[]>(environment.apiUrl + '/articles/me');
     }
 
+    getArticleByUrl(url: string): Observable<Article> {
+        return this.http.get<Article>(environment.apiUrl + `/article/url/${url}`);
+    }
+
 }

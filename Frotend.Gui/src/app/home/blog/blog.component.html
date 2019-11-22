@@ -27,14 +27,14 @@
           </div>            
         </div>
         <div class="col-6 text-right">
-            <button class="btn btn-primary">Weiterlesen</button>
+            <button [routerLink]="['/article', article.url]" class="btn btn-primary">Weiterlesen</button>
         </div>
       </div>  
     </div>
     <div class="col-md-1 blue-col d-none d-md-block">
         <div class="row justify-content-center" style="height: 100%;">
           <div class="col align-self-center p-0 text-center">
-              <a routerLink="/home"><i class="material-icons md-light">
+              <a [routerLink]="['/article', article.url]"><i class="material-icons md-light">
                   keyboard_arrow_right
                   </i></a>
           </div>

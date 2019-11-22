@@ -34,6 +34,7 @@ import { MailService } from './_services/mail.service';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { DetailArticleComponent } from './article/detail-article/detail-article.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import localeDe from '@angular/common/locales/de';
     SkillsComponent,
     UserLoginComponent,
     EditArticleComponent,
-    OverviewArticleComponent
+    OverviewArticleComponent,
+    DetailArticleComponent
   ],
   imports: [
     BrowserModule,
