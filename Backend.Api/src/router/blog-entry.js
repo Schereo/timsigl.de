@@ -4,6 +4,22 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 const mongoose = require('mongoose');
 
+const multer = require('multer');
+
+const upload = multer({
+    dest: 'articles',
+    limits: {
+        fileSize: 2000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            cb(new Error('File must be an image'));
+        }
+        
+        cb(undefined, true);
+    }
+});
+
 router.post('/article', auth, async (req, res) => {
 
     const blogEntry = new BlogEntry({
@@ -21,6 +37,10 @@ router.post('/article', auth, async (req, res) => {
     } catch (e) {
         res.status(400).send(e);
     }
+});
+
+router.post('/article/image', auth, upload.single('image'), (req, res) => {
+    res.send();
 });
 
 router.get('/articles', async (req, res) => {

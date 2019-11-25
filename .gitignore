@@ -4,3 +4,5 @@ Frotend.Gui/dist/
 Frotend.Gui/node_modules/
 Backend.Api/node_modules/
 config/
+Backend.Api/articles/
+Backend.Api/avatars/

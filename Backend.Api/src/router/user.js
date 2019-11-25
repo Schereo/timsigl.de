@@ -3,6 +3,21 @@ const User = require('../models/user');
 const router = new express.Router();
 const auth = require('../middleware/auth');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+
+const upload = multer({
+    dest: 'avatars',
+    limits: {
+        fileSize: 2000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            cb(new Error('File must be an image'));
+        }
+        
+        cb(undefined, true);
+    }
+});
 
 router.post('/users', async (req, res) => {
 
@@ -24,6 +39,10 @@ router.post('/users', async (req, res) => {
 
 router.get('/users/me', auth, async (req, res) => {
    res.send(req.user);
+});
+
+router.post('/users/me/avatar', auth, upload.single('avatar'), (req, res) => {
+    res.send()
 });
 
 router.post('/users/login', async (req, res) => {
