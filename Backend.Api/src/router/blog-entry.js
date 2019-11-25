@@ -44,7 +44,7 @@ router.get('/articles/me', auth, async (req, res) => {
 
 router.get('/article/url/:url', async (req, res) => {
     try {
-        const article = await BlogEntry.findOne({url: req.params.url});
+        const article = await BlogEntry.findOne({url: req.params.url}).populate('creator');
         res.send(article);
     } catch (e)  {
         res.status(400).send(e);

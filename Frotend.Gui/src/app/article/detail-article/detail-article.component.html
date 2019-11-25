@@ -1,6 +1,41 @@
-<div class="container">
-    
-    <h2>{{article.heading }}</h2>
-    <h2>{{article}}</h2>
+<div class="article-heading">
+  <h1>{{article?.heading}}</h1>
+  <div class="container-fluid">
+    <div class="row justify-content-center m-3 align-items-center">
+      <div class="col-sm-5">
+        <span *ngFor="let tag of article?.tags" class="tag my-1">#{{tag}}</span>
+      </div>
+      <div class="col-sm-5">
+        <p>Veröffentlicht am <b>{{article?.date | date}}</b></p>
+      </div>
+      <div class="col-sm-2">
+        <div class="row">
+          <div class="col-6">
+            <img class="img-fluid rounded-circle" width="60px" src="../../../assets/tim_portrait.jpg"
+              alt="Tim Sigl, Autor">
+          </div>
+          <div class="col-6 align-self-center pl-0">
+            <span class="font-weight-bolder">{{article?.creator.name}}</span> <br>
+            <span style="color: var(--primary);">Ich</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
+<div class="container article-body">
+  <div *ngFor="let block of article?.text.blocks">
+    <div [ngSwitch]="block.type">
+      <h2 *ngSwitchCase="'header'">
+        {{block.data.text}}
+      </h2>
+      <p *ngSwitchCase="'paragraph'">
+        {{block.data.text}}
+      </p>
+      <p *ngSwitchDefault>
+        {{block.type}}
+        {{block.data.text}}
+      </p>
+    </div>
+  </div>
+</div>
