@@ -41,6 +41,8 @@ router.post('/article', auth, async (req, res) => {
 
 router.post('/article/image', auth, upload.single('image'), (req, res) => {
     res.send();
+}, (error, req, res, next) => {
+    res.status(400).send({error: error.message});
 });
 
 router.get('/articles', async (req, res) => {

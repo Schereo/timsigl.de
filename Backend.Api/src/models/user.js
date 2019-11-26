@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
         default: 'user',
         enum: ['user', 'author', 'moderator', 'admin']
     },
+    avatar: {
+        type: Buffer
+    },
     tokens: [{
         token: {
             type: String,
