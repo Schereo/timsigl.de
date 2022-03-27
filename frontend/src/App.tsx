@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './components/home/home.component';
+import Router from './pages/router/router.component';
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 
 function App() {
@@ -11,7 +9,7 @@ function App() {
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
-                <Home></Home>
+                <Router></Router>
             </MantineProvider>
         </ColorSchemeProvider>
     );

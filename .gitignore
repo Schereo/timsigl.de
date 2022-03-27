@@ -1,8 +1,8 @@
 Backend.Api/.jshintrc
 .vscode
-Frotend.Gui/dist/
-Frotend.Gui/node_modules/
+build
 Backend.Api/node_modules/
 config/
 Backend.Api/articles/
 Backend.Api/avatars/
+node_modules
