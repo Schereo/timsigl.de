@@ -10,6 +10,12 @@ services:
       - './frontend/src:/app/src'
     stdin_open: true
     tty: true
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - './backend/src:/app/src'
   mongo:
     image: mongo:5-focal
     environment:
